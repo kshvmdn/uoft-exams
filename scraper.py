@@ -17,11 +17,10 @@ def parse(resp):
         rows = soup.find('div', id='content').find('table').find_all('tr')
         headers = [col.text.lower() for col in rows[0].find_all('th')]
         for row in rows[1:]:
-            td = [col.text for col in row.find_all('td')]
+            data = [td.text for td in row.find_all('td')]
             course = {}
-            for i in range(len(headers)):
-                course[headers[i]] = td[i]
-                courses.append(course)
+            [course.update({headers[i]: data[i]}) for i in range(len(headers))]
+            courses.append(course)
         return courses
 
 
