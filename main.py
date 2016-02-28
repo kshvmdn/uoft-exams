@@ -18,14 +18,13 @@ parser.add_argument('-ln', dest='last_name', type=str, required=True,
 
 def main():
     args = parser.parse_args()
-    date = ('apr' if args.semester[0] == 'W' else 'dec') + args.semester[1:]
-    ln = args.last_name
+    user_courses, ln, date = args.courses, args.last_name, \
+        ('apr' if args.semester[0] == 'W' else 'dec') + args.semester[1:]
 
-    courses = scrape(BASE_URL.format(date))
-
-    if courses is not None:
-        courses = search(courses, args.courses, ln)
-        pprint(courses)
+    exam_data = scrape(BASE_URL.format(date))
+    if exam_data is not None:
+        user_exams = search(exam_data, user_courses, ln)
+        pprint(user_exams)
     else:
         print('Couldn\'t find schedule data for given date.')
 
