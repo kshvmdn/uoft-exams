@@ -16,13 +16,8 @@ def search(all_courses, user_courses, last_name):
         return c[1] in c[0]['course'].upper() \
                and name_in_section(ln, c[0]['section'])
 
-    def remove_dupes(l):
-        new = []
-        [new.append(obj) for obj in l if obj not in new]
-        return new
-
-    return remove_dupes([c0
-                        for c0, c1 in
-                        filter(is_match, [(c0, c1)
-                               for c1 in user_courses
-                               for c0 in all_courses])])
+    return [c0
+            for c0, c1 in
+            filter(is_match, [(c0, c1)
+                   for c1 in user_courses
+                   for c0 in all_courses])]
