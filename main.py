@@ -23,7 +23,7 @@ parser.add_argument('-f', dest='format', type=str, default='raw',
 
 def main():
     args = parser.parse_args()
-    courses, ln, season, year, output_format = args.courses, args.last_name, \
+    courses, ln, season, year, format_ = args.courses, args.last_name, \
         args.semester[0], args.semester[1:], args.format
 
     if season.upper() not in ('W', 'F') or not year.isnumeric():
@@ -36,7 +36,8 @@ def main():
     if exam_data is not None:
         user_exams = search(exam_data, courses, ln)
         if user_exams is not None:
-            return output(user_exams, args.format, str(ln + '.{}'))
+            return output(
+                user_exams, format_, '{}-{}-exams'.format(ln, date) + '.{}')
         return print('Couldn\'t find exam information for given courses.')
     return print('Couldn\'t find exam information for given semester.')
 
