@@ -16,15 +16,14 @@ A scraper for semesterly exam timetables.
 + Run `main.py` to generate list of exams
 
   ```
-  usage: main.py [-h] [-s SEMESTER] -c COURSES [COURSES ...] -ln LAST_NAME
-               [-f {raw,table,json}]
+  usage: main.py [-h] [-s SEMESTER] -c COURSES [COURSES ...] -ln LAST_NAME [-f {raw,table,json}]
 
   arguments:
     -h, --help                show this help message and exit
-    -s SEMESTER               semester / year to get schedule for (format: SYY, default: W16)
-    -c COURSES [COURSES ...]  courses (separated by a space, use dash for lecture code) [eg. csc148-l0101 csc165]
+    -s SEMESTER               semester / year to get schedule for (format: SYY) [default: W16]
+    -c COURSES [COURSES ...]  courses (separated by a space; use dash for lecture code, eg. csc148-l0101 csc165)
     -ln LAST_NAME             last name
-    -f {raw,table,json}       output format (one of <table|json|raw>)
+    -f {raw,table,json}       output format (one of <table|json|raw>) [default: raw]
 
   example: 
     main.py -s W16 -c csc165 csc148 eco100-l0401 psy100-l0101 -ln madan -f json
