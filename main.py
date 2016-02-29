@@ -23,20 +23,21 @@ parser.add_argument('-f', dest='format', type=str, default='raw',
 
 def main():
     args = parser.parse_args()
+    courses, ln, season, year, output_format = args.courses, args.last_name, \
+        args.semester[0], args.semester[1:], args.format
 
-    if args.semester[0].upper() not in ('W', 'F'):
-        print('Semester must be include season & year (e.g. F15, W16)')
+    if season.upper() not in ('W', 'F') or not year.isnumeric():
+        print('Expected valid semester (should be of form SYY, e.g. F15, W16)')
         sys.exit(0)
 
-    courses, ln, date = args.courses, args.last_name, \
-        ('apr' if args.semester[0] == 'W' else 'dec') + args.semester[1:]
+    date = ('apr' if season == 'W' else 'dec') + year
 
     exam_data = scrape(BASE_URL.format(date))
     if exam_data is not None:
         user_exams = search(exam_data, courses, ln)
         if user_exams is not None:
             return output(user_exams, args.format, str(ln + '.{}'))
-        return print('Couln\'t find exam information for given courses.')
+        return print('Couldn\'t find exam information for given courses.')
     return print('Couldn\'t find exam information for given semester.')
 
 
