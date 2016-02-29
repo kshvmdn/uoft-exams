@@ -1,6 +1,3 @@
-from pprint import pprint
-
-
 def search(all_courses, user_courses, last_name):
 
     def in_course(course_code, user_course):
