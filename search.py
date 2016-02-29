@@ -1,33 +1,37 @@
-def search(all_courses, user_courses, last_name):
+def search(all_courses, student_courses, last_name):
 
-    def in_course(course_code, user_course):
-        return user_course.upper() in course_code.upper()
+    def in_course(student_course, course):
+        return student_course.upper() in course.upper()
 
-    def name_in_section(name, section):
+    def name_in_section(section, ln=last_name):
         if '-' in section:
-            sec = section.split(' - ')  # section = 'K - SH'
-            # some sections may have lecture code too (i.e. 'L0201 K - SH')
-            sec[0] = sec[0].split('  ')[1] if '  ' in sec[0] else sec[0]
-            return sec[0] <= name.upper() <= sec[1]
+            n = section.split(' - ')  # section = 'K - SH'
+            # some sections may have lecture code too (i.e. 'L0201  K - SH')
+            n[0] = n[0].split('  ')[1] if '  ' in n[0] else n[0]
+            return n[0].upper() <= ln.upper() <= n[1].upper()
         return True
 
-    def lecture_in_section(course_code, section):
-        # sections with lecture codes have a double space
-        # sections without names have no dash
-        # course codes with a specified lecture will have a dash
-        if ('  ' in section or '-' not in section) and '-' in course_code:
-            lecture, user_lecture = section.split('  ')[0], \
-                course_code.split('-')[1]
-            return lecture.lower() == user_lecture.lower()
+    def lecture_in_section(student_course, section):
+        # section has a lecture code if
+        #   it has a name range (a dash) and a double space, 'L0201  K - SH'
+        #   it has no name range (no dash), 'L0201'
+        # student_course has a lecture code if it has a dash, 'ECO100-L0201'
+        if ('  ' in section or '-' not in section) and '-' in student_course:
+            section_lecture, student_lecture = \
+                section.split('  ')[0], student_course.split('-')[1]
+            return section_lecture.lower() == student_lecture.lower()
         return True
 
-    def is_match(c, ln=last_name):
-        return in_course(c[0]['course'], c[1].split('-')[0]) \
-               and name_in_section(ln, c[0]['section']) \
-               and lecture_in_section(c[1], c[0]['section'])
+    def in_section(student_course, section):
+        return name_in_section(section) \
+            and lecture_in_section(student_course, section)
 
-    return [c0
-            for c0, c1 in
-            filter(is_match, [(c0, c1)
-                   for c1 in user_courses
-                   for c0 in all_courses])]
+    def is_match(c):
+        return in_course(c[1].split('-')[0], c[0]['course']) \
+            and in_section(c[1], c[0]['section'])
+
+    return [course
+            for course, student_course in
+            filter(is_match, [(c, sc)
+                   for sc in student_courses
+                   for c in all_courses])]
