@@ -1,5 +1,6 @@
 import argparse
-import os
+import sys
+
 from scraper import scrape
 from search import search
 from output import output
@@ -22,6 +23,11 @@ parser.add_argument('-f', dest='format', type=str, default='raw',
 
 def main():
     args = parser.parse_args()
+
+    if args.semester[0].upper() not in ('W', 'F'):
+        print('Semester must be include season & year (e.g. F15, W16)')
+        sys.exit(0)
+
     courses, ln, date = args.courses, args.last_name, \
         ('apr' if args.semester[0] == 'W' else 'dec') + args.semester[1:]
 
