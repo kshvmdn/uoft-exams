@@ -17,8 +17,8 @@ def parse(resp):
         rows = soup.find('div', id='content').find('table').find_all('tr')
         headers = [col.text.lower() for col in rows[0].find_all('th')]
         for row in rows[1:]:
-            data = [td.text for td in row.find_all('td')]
-            course = {}
+            data = [col.text for col in row.find_all('td')]
+            course = dict()
             [course.update({headers[i]: data[i]}) for i in range(len(headers))]
             courses.append(course)
         return courses
