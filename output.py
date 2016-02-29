@@ -19,7 +19,7 @@ def output(data, format_, fn):
 
 
 def render_json(data, file_):
-    return file_.write(json.dumps(data, indent=4))
+    return file_.write(json.dumps(data, indent=2))
 
 
 def render_table(data, file_):
