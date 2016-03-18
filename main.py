@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 import sys
 
@@ -37,7 +39,7 @@ def main():
         user_exams = search(exam_data, courses, ln)
         if user_exams is not None:
             return output(
-                user_exams, format_, '{}-{}-exams'.format(ln, date) + '.{}')
+                user_exams, format_, '{}-exams'.format(ln) + '.{}')
         return print('Couldn\'t find exam information for given courses.')
     return print('Couldn\'t find exam information for given semester.')
 
