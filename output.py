@@ -1,6 +1,5 @@
 import json
 import os
-from pprint import pprint
 from tabulate import tabulate
 
 
@@ -15,7 +14,7 @@ def output(data, format_, fn):
         f = open(os.path.expanduser('~/Desktop/{}'.format(fn)), 'w')
         f.write(render(data))
         return f.close()
-    return pprint(data)
+    return print(render_table(data))
 
 
 def render_json(data):
