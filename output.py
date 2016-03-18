@@ -13,14 +13,14 @@ def output(data, format_, fn):
 
     if render is not None:
         f = open(os.path.expanduser('~/Desktop/{}'.format(fn)), 'w')
-        file_.write(render(data, f))
+        f.write(render(data))
         return f.close()
     return pprint(data)
 
 
-def render_json(data, file_):
+def render_json(data):
     return json.dumps(data, indent=2)
 
 
-def render_table(data, file_):
+def render_table(data):
     return tabulate(data, headers='keys', tablefmt='fancy_grid')
