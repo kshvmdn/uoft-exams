@@ -12,10 +12,11 @@ def search(all_courses, student_courses, last_name):
         return True
 
     def lecture_in_section(student_course, section):
-        # section has a lecture code if
-        #   it has a name range (a dash) and a double space, 'L0201  K - SH'
-        #   it has no name range (no dash), 'L0201'
-        # student_course has a lecture code if it has a dash, 'ECO100-L0201'
+        # section has a lecture code if:
+        #   + it has a name range (a dash) and a double space, 'L0201  K - SH'
+        #   + it has no name range (no dash), 'L0201'
+        # student_course has a lecture code if:
+        #   + it has a dash, 'ECO100-L0201'
         if ('  ' in section or '-' not in section) and '-' in student_course:
             section_lecture, student_lecture = \
                 section.split('  ')[0], student_course.split('-')[1]
