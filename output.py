@@ -1,6 +1,22 @@
 import json
 import os
 from tabulate import tabulate
+import pprint
+
+
+def sort(data):
+    def get_datetime(entry):
+        """Parse and return the date and time for an exam entry."""
+        return entry['date'].split(' ')[1], entry['time'].split(' ')[0]
+
+    new = []
+    for e in data:
+        if len(new) == 0:
+            new.append(e)
+        else:
+            pass
+    pprint.pprint(new)
+    return new
 
 
 def output(data, format_, fn):
@@ -12,9 +28,11 @@ def output(data, format_, fn):
 
     if render is not None:
         f = open(os.path.expanduser('~/Desktop/{}'.format(fn)), 'w')
-        f.write(render(data))
+        # print('Preparing data as {}...'.format(format_), end='')
+        f.write(render(sort(data)))
+        # print(' Done!')
         return f.close()
-    return print(render_table(data))
+    return print(render_table(sort(data)))
 
 
 def render_json(data):
