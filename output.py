@@ -5,6 +5,11 @@ import pprint
 
 
 def sort(data):
+    # currently working on getting sort working, broken unless
+    # next line is uncommented
+
+    # return data
+
     def get_datetime(entry):
         """Parse and return the date and time for an exam entry."""
         return entry['date'].split(' ')[1], entry['time'].split(' ')[0]
