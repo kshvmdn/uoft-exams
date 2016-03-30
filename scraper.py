@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from collections import OrderedDict
 
 
 def scrape(url):
@@ -18,9 +19,9 @@ def parse(resp):
         headers = [col.text.lower() for col in rows[0].find_all('th')]
         for row in rows[1:]:
             data = [col.text for col in row.find_all('td')]
-            course = dict()
-            [course.update({headers[i]: data[i]}) for i in range(len(headers))]
-            courses.append(course)
+            c = OrderedDict()
+            [c.update({headers[i]: data[i]}) for i in range(len(headers))]
+            courses.append(c)
         return courses
 
 
