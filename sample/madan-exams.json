@@ -1,37 +1,30 @@
 [
-    {
-        "course": "CSC165H1S",
-        "date": "THU 14 APR",
-        "section": "I - O",
-        "location": "BN 2S",
-        "time": "EV 7:00 - 10:00"
-    },
-    {
-        "course": "CSC148H1S",
-        "date": "TUE 26 APR",
-        "section": "K - SH",
-        "location": "EX 200",
-        "time": "EV 7:00 - 10:00"
-    },
-    {
-        "course": "MAT137Y1Y",
-        "date": "THU 21 APR",
-        "section": "I - R",
-        "location": "EX 200",
-        "time": "AM 9:00 - 12:00"
-    },
-    {
-        "course": "ECO100Y1Y",
-        "date": "TUE 12 APR",
-        "section": "L0401  K - ME",
-        "location": "GB 405",
-        "time": "EV 7:00 - 10:00"
-    },
-    {
-        "course": "PSY100H1S",
-        "date": "FRI 22 APR",
-        "section": "L0101  LI - PH",
-        "location": "EX 100",
-        "time": "PM 2:00 - 5:00"
-    }
+  {
+    "course": "ECO100Y1Y",
+    "section": "L0401  K - ME",
+    "date": "TUE 12 APR",
+    "time": "EV 7:00 - 10:00",
+    "location": "GB 405"
+  },
+  {
+    "course": "CSC165H1S",
+    "section": "I - O",
+    "date": "THU 14 APR",
+    "time": "EV 7:00 - 10:00",
+    "location": "BN 2S"
+  },
+  {
+    "course": "MAT137Y1Y",
+    "section": "I - R",
+    "date": "THU 21 APR",
+    "time": "AM 9:00 - 12:00",
+    "location": "EX 200"
+  },
+  {
+    "course": "CSC148H1S",
+    "section": "K - SH",
+    "date": "TUE 26 APR",
+    "time": "EV 7:00 - 10:00",
+    "location": "EX 200"
+  }
 ]
