@@ -26,7 +26,7 @@ A scraper for semesterly exam timetables.
     -f {raw,table,json}       output format (one of <table|json|raw>) [default: raw]
 
   example: 
-    ./main.py -s W16 -c csc165 csc148 eco100-l0401 psy100-l0101 -ln madan -f json
+    ./main.py -s W16 -c csc165 csc148 eco100-l0401 mat137 psy100-l0101 -ln madan -f json
     # see ./sample for sample json/table output
   ```
 

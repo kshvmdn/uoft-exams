@@ -18,9 +18,9 @@ parser.add_argument('-c', dest='courses', nargs='+', required=True,
                           lecture code) [eg. csc148-l0101 csc165]')
 parser.add_argument('-ln', dest='last_name', type=str, required=True,
                     help='last name')
-parser.add_argument('-f', dest='format', type=str, default='raw',
-                    choices=['raw', 'table', 'json'],
-                    help='output format (one of <table|json|raw>)')
+parser.add_argument('-f', dest='format', type=str, default=None,
+                    choices=['table', 'json'],
+                    help='output format (one of <table|json>, default: raw)')
 
 
 def main():
