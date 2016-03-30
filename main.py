@@ -9,23 +9,23 @@ from output import output
 BASE_URL = 'http://www.artsci.utoronto.ca/current/exams/{}'
 
 parser = argparse.ArgumentParser(description='UofT Exam Schedule scraper')
-parser.add_argument('-s', '--semester',
-                    dest="semester",
-                    type=str,
-                    default='W16',
-                    help='semester (S) + year (YY) to get schedule for \
-                          (format: SYY) [default: W16]')
 parser.add_argument('-c', '--courses',
                     dest='courses',
                     nargs='+',
                     required=True,
                     help='courses (separated by a space, use dash for \
                           lecture code) [eg. csc148-l0101 csc165]')
-parser.add_argument('-n', '--name',
+parser.add_argument('-ln', '--lname',
                     dest='last_name',
                     type=str,
                     required=True,
                     help='last name')
+parser.add_argument('-s', '--semester',
+                    dest="semester",
+                    type=str,
+                    default='W16',
+                    help='semester (S) + year (YY) to get schedule for \
+                          (format: SYY) [default: W16]')
 parser.add_argument('-f', '--format',
                     dest='format',
                     type=str, default=None,
