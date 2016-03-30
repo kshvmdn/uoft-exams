@@ -18,7 +18,7 @@ def parse(resp):
         rows = soup.find('div', id='content').find('table').find_all('tr')
         headers = [col.text.lower() for col in rows[0].find_all('th')]
         for row in rows[1:]:
-            data = [col.text for col in row.find_all('td')]
+            data = [col.text.strip() for col in row.find_all('td')]
             c = OrderedDict()
             for i in range(len(headers)):
                 c.update({headers[i]: data[i]})
