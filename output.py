@@ -26,7 +26,7 @@ def output(data, format_, fn):
     if render is not None:
         f = open(os.path.expanduser('~/Desktop/{}'.format(fn)), 'w')
         print('Writing data as {}...'.format(format_), end="")
-        f.write(render(data))
+        f.write(render(sort(data)))
         print(' Done!')
         return f.close()
     return print(render_table(sort(data)))
