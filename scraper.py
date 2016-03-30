@@ -20,7 +20,8 @@ def parse(resp):
         for row in rows[1:]:
             data = [col.text for col in row.find_all('td')]
             c = OrderedDict()
-            [c.update({headers[i]: data[i]}) for i in range(len(headers))]
+            for i in range(len(headers)):
+                c.update({headers[i]: data[i]})
             courses.append(c)
         return courses
 
