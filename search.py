@@ -24,15 +24,16 @@ def search(all_courses, student_courses, last_name):
         return True
 
     def in_section(student_course, section):
-        return name_in_section(section) \
-            and lecture_in_section(student_course, section)
+        return (name_in_section(section) and
+                lecture_in_section(student_course, section))
 
     def is_match(c):
-        return in_course(c[1].split('-')[0], c[0]['course']) \
-            and in_section(c[1], c[0]['section'])
+        return (in_course(c[1].split('-')[0], c[0]['course']) and
+                in_section(c[1], c[0]['section']))
 
-    return [course
+    return ([course
             for course, student_course in
             filter(is_match, [(c, sc)
                    for sc in student_courses
-                   for c in all_courses])]
+                   for c in all_courses])] or
+            None)

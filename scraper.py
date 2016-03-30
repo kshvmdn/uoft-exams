@@ -23,7 +23,7 @@ def parse(resp):
             for i in range(len(headers)):
                 c.update({headers[i]: data[i]})
             courses.append(c)
-        return courses
+    return courses or None
 
 
 if __name__ == '__main__':
