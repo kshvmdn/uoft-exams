@@ -5,23 +5,15 @@ import pprint
 
 
 def sort(data):
-    # currently working on getting sort working, broken unless
-    # next line is uncommented
-
-    # return data
-
     def get_datetime(entry):
         """Parse and return the date and time for an exam entry."""
-        return entry['date'].split(' ')[1], entry['time'].split(' ')[0]
+        date = entry['date'].split(' ')[1]
+        time = entry['time'].split(' ')[0]
 
-    new = []
-    for e in data:
-        if len(new) == 0:
-            new.append(e)
-        else:
-            pass
-    pprint.pprint(new)
-    return new
+        # in the case that dates are equivalent, 'A' > 'B' > 'C'
+        return date + ('A' if time == 'AM' else 'B' if time == 'PM' else 'C')
+
+    return sorted(data, key=lambda date: get_datetime(date))
 
 
 def output(data, format_, fn):
