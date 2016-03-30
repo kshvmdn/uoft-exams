@@ -13,7 +13,7 @@ A scraper for semesterly exam timetables.
   pip install -r requirements.txt
   ```
 
-+ Run `main.py` to generate a list of exams (check ./sample for sample output)
++ Run `main.py` to generate a list of exams (see sample output [here](sample))
 
   ```
   usage: main.py [-h] -c COURSES [COURSES ...] -ln LAST_NAME [-s SEMESTER]
