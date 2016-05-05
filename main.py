@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import argparse
-import sys
 
 from scraper import scrape
 from search import search
@@ -40,7 +39,7 @@ def main():
 
     if season.upper() not in ('W', 'F') or not year.isnumeric():
         print('Unexpected semester argument (run -h for details).')
-        sys.exit(1)
+        return
 
     date = ('apr' if season == 'W' else 'dec') + year
 
@@ -51,10 +50,10 @@ def main():
             return output(user_exams, format_, '{}-exams'.format(ln) + '.{}')
         else:
             print('Couldn\'t find exam information for given courses.')
-            sys.exit(1)
+            return
     else:
         print('Couldn\'t find exam information for given semester.')
-        sys.exit(1)
+        return
 
 if __name__ == '__main__':
     main()
