@@ -1,7 +1,7 @@
 import json
 import os
+
 from tabulate import tabulate
-import pprint
 
 
 def sort(data):

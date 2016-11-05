@@ -1,6 +1,7 @@
+from collections import OrderedDict
+
 import requests
 from bs4 import BeautifulSoup
-from collections import OrderedDict
 
 
 def scrape(url):
